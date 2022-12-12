@@ -1,0 +1,6 @@
+[submodule "vendor/littleminx/vendor/glfw"]
+	path = vendor/littleminx/vendor/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "vendor/littleminx/vendor/spdlog"]
+	path = vendor/littleminx/vendor/spdlog
+	url = https://github.com/gabime/spdlog.git
