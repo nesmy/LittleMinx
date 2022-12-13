@@ -2,9 +2,9 @@
 
 // for use by littleminx applications
 
-#include "Log.h"
-#include "Application.h"
+#include "LittleMinx/Log.h"
+#include "LittleMinx/Application.h"
 
 // -------Entry Point---------------
-#include "EntryPoint.h"
+#include "LittleMinx/EntryPoint.h"
 //---------------------------------

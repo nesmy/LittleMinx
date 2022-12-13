@@ -9,3 +9,5 @@
 #else
     #error LittleMinx only support Windows for now!
 #endif
+
+#define BIT(x) (1 << x)
