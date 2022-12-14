@@ -21,7 +21,9 @@ namespace LittleMinx {
 
     void Application::OnEvent(Event& e)
     {
-        LM_CORE_INFO("{0}", e);
+        EventDispatcher dispatcher(e);
+        dispatcher.Dispacth<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+        LM_CORE_TRACE("{0}", e);
     }
 
     void Application::Run()
