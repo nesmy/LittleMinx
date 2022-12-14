@@ -2,8 +2,7 @@
 
 #include "LittleMinx/Core.h"
 
-#include <string>
-#include <functional>
+
 
 namespace LittleMinx
 {

@@ -6,9 +6,11 @@ project(littleminx)
 
 file(GLOB SOURCES src/*.cpp src/LittleMinx/*.cpp)
 
+
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
 add_compile_definitions(LM_PLATFORM_WINDOWS, LM_BUILD_DLL)
+target_precompile_headers(${PROJECT_NAME} PUBLIC include/lmpch.h)
 
 add_subdirectory(vendor/glfw)
 add_subdirectory(vendor/spdlog)

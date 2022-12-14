@@ -1,30 +1,43 @@
+#include "lmpch.h"
 #include "LittleMinx/Application.h"
 
-#include "LittleMinx/Events/ApplicationEvent.h"
 #include "LittleMinx/Log.h"
+
+#include <GLFW/glfw3.h>
 
 namespace LittleMinx {
 
+#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
+
     Application::Application(/* args */)
     {
+        m_Window = std::unique_ptr<Window>(Window::Create());
+        m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
     }
 
     Application::~Application()
     {
     }
 
+    void Application::OnEvent(Event& e)
+    {
+        LM_CORE_INFO("{0}", e);
+    }
+
     void Application::Run()
     {
-        WindowResizeEvent e(1280, 720);
-		if (e.IsInCategory(EventCategoryApplication))
-		{
-			LM_TRACE(e);
-		}
-		if (e.IsInCategory(EventCategoryInput))
-		{
-			LM_TRACE(e);
-		}
-        while(true);
+        while(m_Running)
+        {
+           // glClearColor(1, 0, 1, 1);
+			//glClear(GL_COLOR_BUFFER_BIT);
+            m_Window->OnUpdate();
+        }
     }
+
+    bool Application::OnWindowClose(WindowCloseEvent& e)
+	{
+		m_Running = false;
+		return true;
+	}
 
 }

@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace LittleMinx {
 
     class LM_API MouseMovedEvent : public Event
@@ -29,28 +27,28 @@ namespace LittleMinx {
         float m_MouseX, m_MouseY;
     };
 
-    class LM_API MouseSrolledEvent : public Event
-    {
-    public:
-        MouseMovedEvent(float xOffset, float yOffset)
-            : m_XOffset(xOffset), m_YOffset(yOffset) {}
+    class LM_API MouseScrolledEvent : public Event
+	{
+	public:
+		MouseScrolledEvent(float xOffset, float yOffset)
+			: m_XOffset(xOffset), m_YOffset(yOffset) {}
 
-        inline float GetXOffset() const { return m_XOffset; }
-        inline float GetYOffset() const { return m_YOffset; }
+		inline float GetXOffset() const { return m_XOffset; }
+		inline float GetYOffset() const { return m_YOffset; }
 
-        std::string ToString() const override
-        {
-            std::stringstream ss;
-            ss << "MouseScrolledEvent: " << GetXOffset() << ", " << GetYOffset();
-            return ss.str();
-        }
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "MouseScrolledEvent: " << GetXOffset() << ", " << GetYOffset();
+			return ss.str();
+		}
 
         static EventType GetStaticType() { return EventType::MouseScrolled; }
-        EVENT_CLASS_TYPE(MouseScrolled)
-        EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
-    private:
-        float m_XOffset, m_YOffset;
-    };
+		EVENT_CLASS_TYPE(MouseScrolled)
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+	private:
+		float m_XOffset, m_YOffset;
+	};
 
     class LM_API MouseButtonEvent : public Event
     {
